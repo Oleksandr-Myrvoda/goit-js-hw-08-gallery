@@ -26,9 +26,6 @@ const elements = images.map(({original, preview, description}) => {
 refs.gallery.insertAdjacentHTML('beforeend', elements.join(''));
 console.log(refs.gallery);
 // ======================================================
-// Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
-// Открытие модального окна по клику на элементе галереи.
-// Подмена значения атрибута src элемента img.lightbox__image.
 
 refs.gallery.addEventListener('click', (e) => {
     e.preventDefault();
@@ -45,16 +42,8 @@ refs.gallery.addEventListener('click', (e) => {
 })
 
 // ==================================================
-// Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
-// Очистка значения атрибута src элемента img.lightbox__image.
-// Это необходимо для того, чтобы при следующем открытии модального окна, 
-// пока грузится изображение, мы не видели предыдущее.
 
 refs.lightboxButton.addEventListener('click', closeLightBox)
-
-// =====================================================
-// Закрытие модального окна по клику на div.lightbox__overlay.
-
 refs.lightboxOverlay.addEventListener('click', closeLightBox)
 
 
@@ -67,8 +56,6 @@ function closeLightBox () {
 }
 
 // =============================================================
-// Закрытие модального окна по нажатию клавиши ESC.
-
 
 function closeEsc (evt) {
     if (evt.code !== 'Escape') {
@@ -76,6 +63,3 @@ function closeEsc (evt) {
     }
     closeLightBox();    
 }
-
-// ===========================================================
-// Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
